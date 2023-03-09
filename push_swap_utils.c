@@ -6,7 +6,7 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 00:22:40 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/02/28 00:35:46 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/03/02 13:35:24 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,21 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 		return ;
 	new->next = *lst;
 	*lst = new;
+}
+
+int	ft_strncmp(char *s1, char *s2, size_t n)
+{
+	size_t	i;
+
+	if (n == 0)
+		return (0);
+	i = 0;
+	while (s1[i] == s2[i] && s1[i] != '\0')
+	{
+		if (i < (n - 1))
+			i++;
+		else
+			return (0);
+	}
+	return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
 }

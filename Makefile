@@ -6,7 +6,7 @@
 #    By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 15:36:00 by msekhsou          #+#    #+#              #
-#    Updated: 2023/03/01 02:15:42 by msekhsou         ###   ########.fr        #
+#    Updated: 2023/03/02 17:21:11 by msekhsou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 INC = push_swap.h
 PRINTF = ft_printf/libftprintf.a
-SRC = instructions.c push_swap_utils.c tools.c main.c
+SRC = instructions.c push_swap_utils.c tools.c main.c push_swap.c
 
 OBJ = $(SRC:.c=.o)
 OFILES := $(CFILES:.c=.o)
