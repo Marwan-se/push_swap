@@ -6,34 +6,14 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:36:03 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/09 17:33:59 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:22:14 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int	main(int ac, char **av)
-// {
-// 	t_list	**stack_a;
-// 	t_list	**stack_b;
-
-// 	if (ac > 1)
-// 	{
-// 		stack_a = malloc(sizeof(t_list));
-// 		if (!stack_a)
-// 			return (0);
-// 		stack_b = malloc(sizeof(t_list));
-// 		if (!stack_b)
-// 			return (0);
-// 		*stack_a = 0;
-// 		*stack_b = 0;
-		
-// 	}
-// 	return (0);
-// }
-void ft_LIS(t_list **stack)
+void ft_LIS(t_list **stack,t_list **b)
 {
-    // 1 find thi Longest Increasing Subsequence and put it in array
     int *arr = malloc(sizeof(int) * stack_len(*stack));
     t_list *tmp = *stack;
     int i = 0;
@@ -46,15 +26,13 @@ void ft_LIS(t_list **stack)
     int *max_list = malloc(sizeof(int) * stack_len(*stack));
     i = 0;
     int k = 0;
-    while(i <  stack_len(*stack))
+    while(i < stack_len(*stack))
     {
-        // printf("i = %d\n",i);
         k  = find_lis(arr,i,stack_len(*stack));
         max_list[i] = k;
         i++;
         k = 0;
     }
-    //find the max in max_list
     i = 0;
     int index = 0;
     int max = max_list[0];
@@ -68,11 +46,7 @@ void ft_LIS(t_list **stack)
         i++;
     }
     t_list *lis = final_list(index,arr,stack_len(*stack));
-    while(lis)
-    {
-        printf("{%d}\n",lis->content);
-        lis=lis->next;
-    }
+    push_lis_b(stack,b,lis);
 }
 
 t_list *final_list(int i,int *arr,int top)
@@ -100,6 +74,7 @@ t_list *final_list(int i,int *arr,int top)
     }
     return (stack);
 }
+
 int find_lis(int *arr,int i,int top)
 {
     int j;
@@ -126,29 +101,71 @@ int find_lis(int *arr,int i,int top)
     return (k);
 }
 
-int find_max(t_list *top)
+int find_var(t_list **long_list,int data)
 {
-    int max;
-	max = top->content;
-    t_list *ptr = top;
-    while (ptr != NULL)
+    t_list *tmp = *long_list;
+    while(tmp)
     {
-        if (ptr->content > max)
-            max = ptr->content;
-        ptr = ptr->next;
+        if(data == tmp->content)
+            return 1;
+        tmp = tmp->next;
     }
-    return max;
+    return 0;
+}
+void    push_lis_b(t_list **a,t_list **b,t_list *longlist)
+{
+    int i = stack_len(*a);
+    while(i)
+    {
+        if(find_var(&longlist,(*a)->content))
+            ft_rotate(a, "ra");
+        else
+            push_to(a,b, "pb");
+        i--;
+    }
+    push_lis_a(a,b);
 }
 
-int find_min(t_list *top)
+void    push_lis_a(t_list **a, t_list **b)
 {
-    int min = top->content;
-    t_list *ptr = top;
-    while (ptr != NULL)
-    {
-        if (ptr->content < min)
-            min = ptr->content;
-        ptr = ptr->next;
-    }
-    return min;
+	while (stack_len(*b))
+	{
+        int data = (*b)->content;
+        t_list *i = (*a);
+        t_list *j = (*a)->next;
+        t_list *tmp = i;
+        int next_one = find_min(*a);//min
+        int len = stack_len(*a);
+        while(len--)
+        {
+            if(data > i->content && data < j->content)
+            {
+                next_one = j->content;
+                break;
+            }
+            j = j->next;
+            i = i->next;
+            if(i == NULL)
+            {
+                i = tmp;
+            }
+            if(j == NULL)
+            {
+                j = tmp;
+            }
+        }
+        /// we have j;
+        /// we need to move j int the top of a
+        while((*a)->content != next_one)
+        {
+            ft_rotate(a, "ra");
+        }
+        push_to(b,a, "pa");
+        int min = find_min(*a);
+        while((*a)->content != min)
+        {
+            ft_rotate(a, "ra");
+        }
+	}
+	
 }

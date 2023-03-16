@@ -6,7 +6,7 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:43:34 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/09 17:34:14 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/03/16 17:20:57 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,23 +43,37 @@ int		ft_strncmp(char *s1, char *s2, size_t n);
 int		isEmpty(t_list *stack);
 void	push(t_list **stk, int data);
 int		pop(t_list** stk);
-void	swap_f(t_list **a);
-void	ss(t_list	*a,t_list *b);
-void	push_to(t_list **from,t_list **to);
-void	ft_rotate(t_list **s);
-void	rr(t_list *a,t_list *b);
-void	ft_reverse_rotate(t_list **stack);
-void	rrr(t_list *a,t_list *b);
+void	swap_f(t_list **a, char *str);
+void	ss(t_list	*a,t_list *b, char *str);
+void	push_to(t_list **from,t_list **to, char *str);
+void	ft_rotate(t_list **s, char *str);
+void	rr(t_list *a,t_list *b, char *str);
+void	ft_reverse_rotate(t_list **stack, char *str);
+void	rrr(t_list *a,t_list *b, char *str);
 int		find_max(t_list *top);
 void	sort_3(t_list **stack);
-int		dup_nbs(int argc, char **argv);
 void	sort_2(t_list **stack);
 void	sort5(t_list **a, t_list **b);
 int		find_min(t_list *top);
 int		stack_len(t_list *stack);
 t_list	*stack_bottom(t_list *stack);
-void ft_LIS(t_list **stack);
-int find_lis(int *arr,int i,int top);
+void 	ft_LIS(t_list **stack,t_list **b);
+int 	find_lis(int *arr,int i,int top);
 t_list *final_list(int i,int *arr,int top);
+void    push_lis_b(t_list **a,t_list **b,t_list *longlist);
+int		find_var(t_list **long_list,int data);
+size_t 	ft_strlen(char *str);
+int		dup_nbs(int ac, char **av);
+int 	check_for_char(int ac, char **av);
+int		ft_isdigit(int c);
+long	ft_atoi(char *str);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dst, char *src, size_t dstsize);
+char	*ft_strjoin(char *s1, char *s2);
+char	**ft_split(char *s, char c);
+size_t	space_number(char *arg);
+int		arg_empty(char **arg);
+char	**arguments(int ac, char **av);
+void    push_lis_a(t_list **a, t_list **b);
 
 #endif
