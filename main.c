@@ -6,7 +6,7 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 23:02:36 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/16 16:22:11 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:20:31 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@ int main(int ac,char **av)
 	t_list *a = NULL;
 	t_list *b = NULL;
 
-	// int i;
-	// i = ac - 1;
-	// while(i > 0)
-	// 	push(&a, ft_atoi(av[i--]));
-	
 	char **t = arguments(ac,av);
 	ac = 0;
 	while(t[ac] != NULL)
@@ -34,17 +29,20 @@ int main(int ac,char **av)
         return (1);
     }
 	ac = 0;
+	while (t[ac])
+		ac++;
+	ac = ac - 1;
 	while(t[ac] != NULL)
 	{
 		push(&a,ft_atoi(t[ac]));
-		ac++;
+		ac--;
 	}
 	ft_LIS(&a,&b);
-	while(a)
-	{
-		printf("%d\n",a->content);
-		a = a->next;
-	}
+	// while(a)
+	// {
+	// 	printf("%d\n",a->content);
+	// 	a = a->next;
+	// }
 }
     // sort_3(&a);
 	// swap_f(&a);Y

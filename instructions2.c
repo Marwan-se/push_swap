@@ -6,7 +6,7 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 19:01:41 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/16 17:20:42 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/03/19 15:32:08 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void rrr(t_list *a,t_list *b, char *str)
 void	sort_2(t_list **stack)
 {
 	if ((*stack)->content > (*stack)->next->content)
-			swap_f(stack, "sa");
+			swap_f(stack, "sa\n");
 }
 
 void sort_3(t_list **stack)
@@ -50,19 +50,19 @@ void sort_3(t_list **stack)
 	
 	if((*stack)->content == max)
 	{
-		ft_rotate(stack, "ra");
+		ft_rotate(stack, "ra\n");
 		if((*stack)->content > (*stack)->next->content)
-			swap_f(stack, "sa");
+			swap_f(stack, "sa\n");
 	}
 	else if((*stack)->next->content == max)
 	{
-		ft_reverse_rotate((stack), "rra");
+		ft_reverse_rotate((stack), "rra\n");
 		if((*stack)->content > (*stack)->next->content)
-			swap_f(stack, "sa");
+			swap_f(stack, "sa\n");
 	}
 	else 
 		if ((*stack)->content > (*stack)->next->content)
-			swap_f(stack, "sa");
+			swap_f(stack, "sa\n");
 }
 
 void	sort5(t_list **a, t_list **b)
@@ -74,23 +74,23 @@ void	sort5(t_list **a, t_list **b)
 		min = find_min(*a);
 		if ((*a)->content == min) 
 		{
-			push_to(a, b, "pb");
+			push_to(a, b, "pb\n");
 		}
 		else if ((*a)->next->content == min)
 		{
-			swap_f(a, "sa");
-			push_to(a,b, "pb");
+			swap_f(a, "sa\n");
+			push_to(a,b, "pb\n");
 		}
 		else if (stack_bottom(*a)->content == min)
 		{
-			ft_reverse_rotate(a, "rra");
-			push_to(a,b, "pb");
+			ft_reverse_rotate(a, "rra\n");
+			push_to(a,b, "pb\n");
 		}
 		else
-			ft_rotate(a, "ra");
+			ft_rotate(a, "ra\n");
 	}
 
 	sort_3(a);
 	while (stack_len(*b) > 0)
-		push_to(b,a, "pa");
+		push_to(b,a, "pa\n");
 }

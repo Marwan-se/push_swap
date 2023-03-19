@@ -6,7 +6,7 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:36:03 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/16 17:22:14 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:15:43 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,13 @@ void ft_LIS(t_list **stack,t_list **b)
         i++;
     }
     t_list *lis = final_list(index,arr,stack_len(*stack));
+   tmp = lis;
+    while (tmp)
+    {
+        printf("%d ,", tmp->content);
+        tmp = tmp->next;
+    }
+    
     push_lis_b(stack,b,lis);
 }
 
@@ -118,9 +125,9 @@ void    push_lis_b(t_list **a,t_list **b,t_list *longlist)
     while(i)
     {
         if(find_var(&longlist,(*a)->content))
-            ft_rotate(a, "ra");
+            ft_rotate(a, "ra\n");
         else
-            push_to(a,b, "pb");
+            push_to(a,b, "pb\n");
         i--;
     }
     push_lis_a(a,b);
@@ -128,6 +135,7 @@ void    push_lis_b(t_list **a,t_list **b,t_list *longlist)
 
 void    push_lis_a(t_list **a, t_list **b)
 {
+    puts("b t a");
 	while (stack_len(*b))
 	{
         int data = (*b)->content;
@@ -154,17 +162,33 @@ void    push_lis_a(t_list **a, t_list **b)
                 j = tmp;
             }
         }
+        tmp = (*a);
+        len = stack_len(*a);
+        int index = 0;
+        while(len--)
+        {
+            if(tmp->content == next_one)
+                break;
+            tmp = tmp->next;
+            index++;
+        }
+        // printf("{%d}\n",index);
+        
         /// we have j;
         /// we need to move j int the top of a
+        
         while((*a)->content != next_one)
         {
-            ft_rotate(a, "ra");
+            if(index <= stack_len(*a)/2)
+                ft_rotate(a, "ra\n");
+            else
+                ft_reverse_rotate(a,"rra\n");
         }
-        push_to(b,a, "pa");
+        push_to(b,a, "pa\n");
         int min = find_min(*a);
         while((*a)->content != min)
         {
-            ft_rotate(a, "ra");
+            ft_rotate(a, "ra\n");
         }
 	}
 	
