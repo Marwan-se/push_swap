@@ -6,7 +6,7 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:43:34 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/16 17:20:57 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/03/25 02:30:03 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
-typedef struct Stack
+typedef struct s_stack
 {
-    struct s_list	*top;
-}	t_stack;
-
+    t_list *top;
+    int size;
+}              t_stack;
 
 t_list	*ft_lstnew(int data);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -47,9 +47,9 @@ void	swap_f(t_list **a, char *str);
 void	ss(t_list	*a,t_list *b, char *str);
 void	push_to(t_list **from,t_list **to, char *str);
 void	ft_rotate(t_list **s, char *str);
-void	rr(t_list *a,t_list *b, char *str);
+void rr(t_list **a,t_list **b, char *str);
 void	ft_reverse_rotate(t_list **stack, char *str);
-void	rrr(t_list *a,t_list *b, char *str);
+void rrr(t_list **a,t_list **b, char *str);
 int		find_max(t_list *top);
 void	sort_3(t_list **stack);
 void	sort_2(t_list **stack);
@@ -75,5 +75,11 @@ size_t	space_number(char *arg);
 int		arg_empty(char **arg);
 char	**arguments(int ac, char **av);
 void    push_lis_a(t_list **a, t_list **b);
+int		best_nb(t_list *a, t_list *b, int nb, int next_nb);
+int		get_p(t_list *a, t_list *b, int nb, int next_nb);
+int get_index(t_list **stack, int value);
+int	get_min_index(int *arr, int size);
+void sort_b_to_a(t_list **a, t_list **b);
+void push_to_stack_a(t_list**a, t_list **b, int nb, int next_nb);
 
 #endif
