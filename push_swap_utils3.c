@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils4.c                                 :+:      :+:    :+:   */
+/*   push_swap_utils3.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/15 20:38:01 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/15 20:43:03 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:43:30 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static size_t	ft_counter(char const *s, char c)
 	return (w);
 }
 
-static char	*ft_mem_word(char  *s, char c)
+static char	*ft_mem_word(char *s, char c)
 {
 	int		i;
 	char	*tab;
@@ -54,7 +54,7 @@ static char	**ft_free( char **tab, int i)
 	return (NULL);
 }
 
-static char	**ft_fixn(char  *s, char c)
+static char	**ft_fixn(char *s, char c)
 {
 	int		i;
 	int		words;
@@ -71,9 +71,7 @@ static char	**ft_fixn(char  *s, char c)
 			s++;
 		tab[i] = ft_mem_word(s, c);
 		if (!tab[i])
-		{
 			return (ft_free(tab, i));
-		}
 		s += ft_strlen(tab[i]);
 		i++;
 	}

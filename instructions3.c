@@ -6,7 +6,7 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 19:06:54 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/25 19:59:55 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/03/31 04:57:06 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,20 @@ int	find_min(t_list *top)
 		ptr = ptr->next;
 	}
 	return (min);
+}
+
+void	push_lis_b(t_list **a, t_list **b, t_list *longlist)
+{
+	int	i;
+
+	i = stack_len(*a);
+	while (i)
+	{
+		if (find_var(&longlist, (*a)->content))
+			ft_rotate(a, "ra\n");
+		else
+			push_to(a, b, "pb\n");
+		i--;
+	}
+	sort_b_to_a(a, b);
 }

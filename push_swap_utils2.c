@@ -6,7 +6,7 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:33:16 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/16 14:15:58 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:05:23 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 size_t	ft_strlen(char *str)
 {
 	int	i;
-	i = 0;
 
+	i = 0;
 	if (!str)
 		return (0);
 	while (str[i])
@@ -51,9 +51,9 @@ int	ft_isdigit(int c)
 
 long	ft_atoi(char *str)
 {
-	long x;
-	int sign;
-	long res;
+	long	x;
+	int		sign;
+	long	res;
 
 	x = 0;
 	res = 0;
@@ -90,43 +90,4 @@ char	*ft_strjoin(char *s1, char *s2)
 	ft_strlcpy(pointer, s1, len);
 	ft_strlcat(pointer, s2, len);
 	return (pointer);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	while (src[i])
-		i++;
-	if (dstsize == 0)
-		return (i);
-	while (j < dstsize - 1 && src[j])
-	{
-		dst[j] = src[j];
-		j++;
-	}
-	dst[j] = '\0';
-	return (i);
-}
-
-size_t	ft_strlcat(char *dst, char *src, size_t dstsize)
-{
-	size_t	i;
-	size_t	j;
-
-	if (dstsize == 0 || dstsize <= ft_strlen(dst))
-		return (dstsize + ft_strlen(src));
-	i = ft_strlen(dst);
-	j = 0;
-	while (src[j] != '\0' && i + 1 < dstsize)
-	{
-		dst[i] = src[j];
-		i++;
-		j++;
-	}
-	dst[i] = '\0';
-	return (ft_strlen(dst) + ft_strlen(&src[j]));
 }

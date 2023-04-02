@@ -6,31 +6,65 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 00:30:55 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/02 12:55:17 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/03/28 20:15:41 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int isEmpty(t_list *stack)
+int	is_empty(t_list *stack)
 {
-    return !stack;
+	return (!stack);
 }
 
 void	push(t_list **stk, int data)
 {
-    t_list* stackNode = ft_lstnew(data);
-    stackNode->next = *stk;
-    *stk = stackNode;
+	t_list	*stack_node;
+
+	stack_node = ft_lstnew(data);
+	stack_node->next = *stk;
+	*stk = stack_node;
 }
 
-int pop(t_list** stk)
+int	pop(t_list **stk)
 {
-    if (isEmpty(*stk))
-        return INT_MIN;
-    t_list* temp = *stk;
-    *stk = (*stk)->next;
-    int popped = temp->content;
-    free(temp);
-    return popped;
+	t_list	*temp;
+	int		popped;
+
+	if (is_empty(*stk))
+		return (INT_MIN);
+	temp = *stk;
+	*stk = (*stk)->next;
+	popped = temp->content;
+	free(temp);
+	return (popped);
+}
+
+int	stack_sorted(t_list *stack)
+{
+	int	prevs;
+
+	prevs = INT_MIN;
+	while (stack != NULL)
+	{
+		if (stack->content < prevs)
+			return (0);
+		prevs = stack->content;
+		stack = stack->next;
+	}
+	return (1);
+}
+
+int	find_var(t_list **long_list, int data)
+{
+	t_list	*tmp;
+
+	tmp = *long_list;
+	while (tmp)
+	{
+		if (data == tmp->content)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
 }

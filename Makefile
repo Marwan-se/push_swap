@@ -6,7 +6,7 @@
 #    By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 15:36:00 by msekhsou          #+#    #+#              #
-#    Updated: 2023/03/16 14:16:10 by msekhsou         ###   ########.fr        #
+#    Updated: 2023/04/01 22:03:17 by msekhsou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ INC = push_swap.h
 PRINTF = ft_printf/libftprintf.a
 SRC = instructions.c push_swap_utils.c tools.c main.c push_swap.c \
 instructions2.c instructions3.c push_swap_utils2.c parsing.c \
-push_swap_utils3.c
+push_swap_utils3.c push_swap_utils1.c ft_lis.c push_swap1.c \
+push_to_stack_a.c
 
 OBJ = $(SRC:.c=.o)
 

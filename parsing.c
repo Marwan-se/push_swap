@@ -6,48 +6,54 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:14:35 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/16 15:51:27 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/03/29 13:09:10 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int dup_nbs(int ac, char **av)
+int	dup_nbs(int ac, char **av)
 {
-    int i = 0;
-    while (i < ac)
-    {
-        if (ft_atoi(av[i]) > 2147483647 || ft_atoi(av[i]) < -2147483648)
-            return(1);
-        int j = i + 1;
-        while (j < ac)
-        {
-            if (ft_atoi(av[j]) ==  ft_atoi(av[i]))
-                return (1);
-            j++;
-        }
-        i++;
-    }
-    return (0);
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < ac)
+	{
+		if (ft_atoi (av[i]) > 2147483647 || ft_atoi (av[i]) < -2147483648)
+			return (1);
+		j = i + 1;
+		while (j < ac)
+		{
+			if (ft_atoi(av[j]) == ft_atoi(av[i]))
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
 
-int check_for_char(int ac, char **av)
+int	check_for_char(int ac, char **av)
 {
-    int i = 0;
-    while (i < ac)
-    {
-        int j = 0;
-        while (av[i][j] != '\0')
-        {
-            if(av[i][j] == '-' || av[i][j] == '+')
-                j++;
-            if (!ft_isdigit(av[i][j]))
-                return 0;
-            j++;
-        }
-        i++;
-    }
-    return 1;
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < ac)
+	{
+		j = 0;
+		while (av[i][j] != '\0')
+		{
+			if (av[i][j] == '-' || av[i][j] == '+')
+				j++;
+			if (!ft_isdigit(av[i][j]))
+				return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }
 
 size_t	space_number(char *arg)
@@ -105,6 +111,6 @@ char	**arguments(int ac, char **av)
 		free(arg);
 	}
 	table = ft_split(s, ' ');
-	free (s);
+	free(s);
 	return (table);
 }
