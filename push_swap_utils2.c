@@ -6,7 +6,7 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 16:33:16 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/29 13:05:23 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/04/02 13:18:09 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,29 +51,30 @@ int	ft_isdigit(int c)
 
 long	ft_atoi(char *str)
 {
-	long	x;
-	int		sign;
-	long	res;
+	int				i;
+	long			n;
+	long long		res;
 
-	x = 0;
+	i = 0;
 	res = 0;
-	sign = 1;
-	while (str[x] == 32 || (str[x] >= 9 && str[x] <= 13))
-		x++;
-	if (str[x] == '-')
+	n = 1;
+	while (str[i] == '\n' || str[i] == '\r' || str[i] == '\t'
+		||str[i] == '\f' || str[i] == '\v' || str[i] == ' ' )
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		sign = -1;
-		x++;
+		if (str[i] == '-')
+			n = -n;
+		i++;
 	}
-	else if (str[x] == '+')
-		x++;
-	while (str[x] != '\0' && str[x] >= '0' && str[x] <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
+		res = res * 10 + (str[i++] - '0');
+	if (str[i] != '\0')
 	{
-		res *= 10;
-		res += str[x] - 48;
-		x++;
+		ft_printf("Error\n");
+		exit(1);
 	}
-	return (res * sign);
+	return (res * n);
 }
 
 char	*ft_strjoin(char *s1, char *s2)

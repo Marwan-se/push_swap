@@ -6,7 +6,7 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 19:01:41 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/31 03:08:06 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/04/02 03:00:09 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,7 @@ void	sort5(t_list **a, t_list **b)
 	{
 		min = find_min(*a);
 		if ((*a)->content == min)
-		{
 			push_to(a, b, "pb\n");
-		}
 		else if ((*a)->next->content == min)
 		{
 			swap_f(a, "sa\n");
