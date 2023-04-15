@@ -6,7 +6,7 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 23:02:36 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/04/15 02:51:00 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/04/15 16:28:02 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ void	free_for_norm(char **t, t_list *a, t_list *b)
 {
 	int	l;
 
-	l = stack_len(a);
-	while (l >= 0)
-		free(t[l--]);
+	l = 0;
+	while (t[l])
+		free(t[l++]);
 	free(t);
 	free_list(a);
 	free_list(b);
@@ -50,7 +50,7 @@ int	main(int ac, char **av)
 	while (t[ac] != NULL)
 		ac++;
 	if (dup_nbs(ac, t) || !check_for_char(ac, t))
-		return (ft_printf("Error\n"));
+		return (free_for_norm(t, a, b), ft_printf("Error\n"), 1);
 	args = ac;
 	ac = ac - 1;
 	while (ac >= 0)
