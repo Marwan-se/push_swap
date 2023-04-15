@@ -6,7 +6,7 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 20:33:00 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/31 03:38:53 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/04/15 02:07:02 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	ft_lis(t_list **stack, t_list **b, int index, int *arr)
 	{
 		k = find_lis(arr, i, stack_len(*stack));
 		max_list[i] = k;
-		i++;
 		k = 0;
 	}
 	i = -1;
@@ -65,7 +64,7 @@ int	ft_lis(t_list **stack, t_list **b, int index, int *arr)
 		ft_lis2(&max, &max_list[i], &index, &i);
 	lis = final_list(index, arr, stack_len(*stack));
 	free(max_list);
-	return (free(arr), push_lis_b(stack, b, lis), free_list(lis), 0);
+	return (free(arr), push_lis_b(stack, b, &lis), free_list(lis), 0);
 }
 
 t_list	*final_list(int i, int *arr, int top)

@@ -6,7 +6,7 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 19:06:54 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/31 04:57:06 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/04/15 02:07:33 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,14 @@ int	find_min(t_list *top)
 	return (min);
 }
 
-void	push_lis_b(t_list **a, t_list **b, t_list *longlist)
+void	push_lis_b(t_list **a, t_list **b, t_list **longlist)
 {
 	int	i;
 
 	i = stack_len(*a);
 	while (i)
 	{
-		if (find_var(&longlist, (*a)->content))
+		if (find_var(longlist, (*a)->content))
 			ft_rotate(a, "ra\n");
 		else
 			push_to(a, b, "pb\n");

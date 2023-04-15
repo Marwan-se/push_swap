@@ -6,11 +6,13 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:36:03 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/03/27 23:08:12 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/04/12 15:37:04 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// find the index of the minimum value in the stack
 
 int	get_index(t_list **stack, int value)
 {
@@ -28,6 +30,9 @@ int	get_index(t_list **stack, int value)
 	}
 	return (index);
 }
+
+// find the next number in the stack that is
+//  greater than the current top value of the stack
 
 int	get_next_nb(t_list *a, int data, t_list *i, t_list *j)
 {
@@ -56,6 +61,8 @@ int	get_next_nb(t_list *a, int data, t_list *i, t_list *j)
 	}
 	return (next_one);
 }
+
+// to get the content of the node at the top of the stack
 
 int	get_at_index(t_list *list, int index)
 {

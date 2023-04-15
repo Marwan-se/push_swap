@@ -6,7 +6,7 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/26 20:38:22 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/04/01 22:21:41 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/04/13 12:28:38 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void	sort_b_to_a(t_list **a, t_list **b)
 	}
 }
 
+// returns the index of the best push operation
+
 int	best_nb(t_list *a, t_list *b, int nb, int next_nb)
 {
 	int	index;
@@ -87,6 +89,8 @@ int	best_nb(t_list *a, t_list *b, int nb, int next_nb)
 		arr[2] = stack_len(a) - next_nb_index;
 	return (arr[get_min_index(arr, 3)]);
 }
+
+// returns the minimum score of each possible push operation
 
 int	get_p(t_list *a, t_list *b, int nb, int next_nb)
 {

@@ -6,7 +6,7 @@
 /*   By: msekhsou <msekhsou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 15:43:34 by msekhsou          #+#    #+#             */
-/*   Updated: 2023/04/01 22:15:06 by msekhsou         ###   ########.fr       */
+/*   Updated: 2023/04/15 02:47:59 by msekhsou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ t_list	*stack_bottom(t_list *stack);
 int		ft_lis(t_list **stack, t_list **b, int index, int *arr);
 int		find_lis(int *arr, int i, int top);
 t_list	*final_list(int i, int *arr, int top);
-void	push_lis_b(t_list **a, t_list **b, t_list *longlist);
+void	push_lis_b(t_list **a, t_list **b, t_list **longlist);
 int		find_var(t_list **long_list, int data);
 size_t	ft_strlen(char *str);
 int		dup_nbs(int ac, char **av);
@@ -91,5 +91,6 @@ void	psh_rrr(t_list**a, t_list **b, t_list **a_current, t_list **b_current);
 void	push_rra(t_list**a, t_list	**a_current, int *next_nb);
 void	push_rrb(t_list**b, t_list	**b_current, int *nb);
 void	psh_norm(t_list **a, t_list **b, t_list **tmp);
+void	free_for_norm(char **t, t_list *a, t_list *b);
 
 #endif
